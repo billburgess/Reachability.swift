@@ -49,7 +49,7 @@ func callback(reachability: SCNetworkReachability, flags: SCNetworkReachabilityF
     reachability.reachabilityChanged()
 }
 
-public class Reachability {
+open class Reachability {
 
     public typealias NetworkReachable = (Reachability) -> ()
     public typealias NetworkUnreachable = (Reachability) -> ()
@@ -77,29 +77,29 @@ public class Reachability {
         }
     }
 
-    public var whenReachable: NetworkReachable?
-    public var whenUnreachable: NetworkUnreachable?
+    open var whenReachable: NetworkReachable?
+    open var whenUnreachable: NetworkUnreachable?
 
     @available(*, deprecated: 4.0, renamed: "allowsCellularConnection")
-    public let reachableOnWWAN: Bool = true
+    open let reachableOnWWAN: Bool = true
 
     /// Set to `false` to force Reachability.connection to .none when on cellular connection (default value `true`)
-    public var allowsCellularConnection: Bool
+    open var allowsCellularConnection: Bool
 
     // The notification center on which "reachability changed" events are being posted
-    public var notificationCenter: NotificationCenter = NotificationCenter.default
+    open var notificationCenter: NotificationCenter = NotificationCenter.default
 
     @available(*, deprecated: 4.0, renamed: "connection.description")
-    public var currentReachabilityString: String {
+    open var currentReachabilityString: String {
         return "\(connection)"
     }
 
     @available(*, unavailable, renamed: "connection")
-    public var currentReachabilityStatus: Connection {
+    open var currentReachabilityStatus: Connection {
         return connection
     }
 
-    public var connection: Connection {
+    open var connection: Connection {
         guard isReachableFlagSet else { return .none }
 
         // If we're reachable, but not on an iOS device (i.e. simulator), we must be on WiFi
