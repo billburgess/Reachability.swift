@@ -264,7 +264,7 @@ fileprivate extension Reachability {
 
         DispatchQueue.main.async {
             if self.usingHostname {
-                print("USING HOSTNAME ABOUT TO CALL BLOCK")
+                //print("USING HOSTNAME ABOUT TO CALL BLOCK")
             }
             block?(self)
             self.notificationCenter.post(name: .reachabilityChanged, object:self)
@@ -314,7 +314,7 @@ fileprivate extension Reachability {
     var flags: SCNetworkReachabilityFlags {
         var flags = SCNetworkReachabilityFlags()
         if SCNetworkReachabilityGetFlags(reachabilityRef, &flags) {
-            print("Returning flags \(flags)")
+            //print("Returning flags \(flags)")
             return flags
         } else {
             return SCNetworkReachabilityFlags()
